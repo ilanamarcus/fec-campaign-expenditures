@@ -9,8 +9,15 @@ Created on Tue May 14 22:28:09 2019
 from client import Client
 import pandas as pd
 
-def expense_cats(df):
-    return df.groupby(["disbursement_description"])["disbursement_amount"].sum()
+cats = pd.read_csv("cats.csv")
+cats.columns = ["disbursement_description", "expense_category"]
+
+def expense_cats(df): 
+    df = df.merge(cats, how='left')
+    print(df.columns)
+    df = df.groupby(["expense_category"])["disbursement_amount"].sum()
+    #df.reset_index(inplace=True)
+    return df
 
 cmt_kamala="C00694455"
 cmt_bernie="C00696948"
@@ -39,10 +46,6 @@ expenses = {
 
 expense_df = pd.DataFrame.from_dict(expenses, orient="index")
 
-import csv
-cols = expense_df.columns
-with open('cats_2.csv', 'w') as file:
-    writer = csv.writer(file)
-    for cat in cols:
-        writer.writerow([cat])
-    
+
+
+

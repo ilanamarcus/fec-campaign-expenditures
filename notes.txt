@@ -1,0 +1,12 @@
+weird:
+contribution
+credit card payment
+donation
+
+
+#import csv
+#cols = expense_df.columns
+#with open('cats_2.csv', 'w') as file:
+#    writer = csv.writer(file)
+#    for cat in cols:
+#        writer.writerow([cat])
