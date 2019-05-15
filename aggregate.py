@@ -32,6 +32,9 @@ beto = c.efile(cmt_beto)
 warren = c.efile(cmt_warren)
 klobuchar = c.efile(cmt_klobuchar)
 
+all_filings = kamala.append([bernie, pete, beto, warren, klobuchar])
+all_filings.to_csv("all_filings.csv")
+
 cats = pd.read_csv("cats.csv")
 cats.columns = ["disbursement_description", "expense_category"]
 expenses = {
