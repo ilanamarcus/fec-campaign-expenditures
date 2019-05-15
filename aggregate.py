@@ -9,10 +9,7 @@ Created on Tue May 14 22:28:09 2019
 from client import Client
 import pandas as pd
 
-cats = pd.read_csv("cats.csv")
-cats.columns = ["disbursement_description", "expense_category"]
-
-def expense_cats(df): 
+def expense_cats(df, cats): 
     df = df.merge(cats, how='left')
     print(df.columns)
     df = df.groupby(["expense_category"])["disbursement_amount"].sum()
@@ -35,16 +32,20 @@ beto = c.efile(cmt_beto)
 warren = c.efile(cmt_warren)
 klobuchar = c.efile(cmt_klobuchar)
 
+cats = pd.read_csv("cats.csv")
+cats.columns = ["disbursement_description", "expense_category"]
 expenses = {
-            "kamala":expense_cats(kamala),
-            "bernie":expense_cats(bernie),
-            "pete":expense_cats(pete),
-            "beto":expense_cats(beto),
-            "warren":expense_cats(warren),
-            "klobuchar":expense_cats(klobuchar)
+            "kamala":expense_cats(kamala, cats),
+            "bernie":expense_cats(bernie, cats),
+            "pete":expense_cats(pete, cats),
+            "beto":expense_cats(beto, cats),
+            "warren":expense_cats(warren, cats),
+            "klobuchar":expense_cats(klobuchar, cats)
         }
 
+
 expense_df = pd.DataFrame.from_dict(expenses, orient="index")
+expense_df.to_csv("candidate_expenses.csv")
 
 
 
