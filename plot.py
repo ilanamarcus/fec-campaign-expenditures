@@ -10,6 +10,7 @@ import plotly.plotly as py
 import plotly.graph_objs as go
 import re
 import math
+from aggregate import cmt_to_name
 
 def plot_expense_categories():
     cand_expenses = pd.read_csv("candidate_expenses.csv", index_col=0)
@@ -76,10 +77,53 @@ def plot_airlines():
     
     fig = go.Figure(data=data, layout=layout)
     py.iplot(fig, filename='airfare')
+    
+def plot_rideshare():
+    all_filings = pd.read_csv("all_filings.csv")
+    rideshare = all_filings[all_filings["recipient_name"].str.contains('^uber|^lyft', flags = re.IGNORECASE)]
+    rideshare["candidate_name"] = rideshare["committee_id"].apply(lambda x: cmt_to_name[x])
+    rideshare.loc[:, "recipient_name"] = rideshare["recipient_name"].apply(lambda x: x.replace(',',' ').split(' ',1)[0])
+    rideshare = rideshare.groupby(["candidate_name", "recipient_name"])[["disbursement_amount"]].sum()
+    
+    for k in cmt_to_name.keys():
+        uber = (cmt_to_name[k], "Uber")
+        lyft = (cmt_to_name[k], "Lyft")
+        
+        if not rideshare.index.isin([uber]).any():
+            #add row
+            rideshare.loc[uber,"disbursement_amount"] = 0
+        if not rideshare.index.isin([lyft]).any():
+            #add row
+            rideshare.loc[lyft,"disbursement_amount"] = 0
+    rideshare.reset_index(inplace=True)
+    rideshare = rideshare.pivot_table(index="candidate_name", columns="recipient_name", values="disbursement_amount")
+    
+    uber_trace = go.Bar(
+            x= list(rideshare.index),
+            y= rideshare["Uber"],
+            name="Spent on Uber"
+    )
+    
+    lyft_trace = go.Bar(
+            x= list(rideshare.index),
+            y= rideshare["Lyft"],
+            name="Spent on Lyft"
+    )
+    
+    data = [uber_trace, lyft_trace]
+    layout = go.Layout(
+        title=go.layout.Title(
+            text='Money spent on rideshares by candidate'
+        ),
+        barmode='group'
+    )
+    
+    fig = go.Figure(data=data, layout=layout)
+    py.iplot(fig, filename='rideshares')
 
 plot_expense_categories()    
 plot_airlines()
-
+plot_rideshare()
     
     
     

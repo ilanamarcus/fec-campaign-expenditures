@@ -16,6 +16,15 @@ def expense_cats(df, cats):
     #df.reset_index(inplace=True)
     return df
 
+cmt_to_name = {
+    "C00694455": "Kamala",
+    "C00696948": "Bernie",
+    "C00697441": "Pete",
+    "C00699090": "Beto",
+    "C00693234": "Warren",
+    "C00696419": "Klobuchar"
+}
+
 cmt_kamala="C00694455"
 cmt_bernie="C00696948"
 cmt_pete="C00697441"
