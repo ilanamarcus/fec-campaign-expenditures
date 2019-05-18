@@ -34,7 +34,7 @@ def plot_expense_categories():
     py.iplot(fig, filename='cand-expenses')
 
 def plot_airlines():
-    all_filings = pd.read_csv("all_filings.csv")
+    all_filings = pd.read_csv("actual_filings.csv")
     airfare = all_filings[all_filings["recipient_name"].str.contains('Airline', flags = re.IGNORECASE)]
     airfare.loc[:, "recipient_name"] = airfare["recipient_name"].apply(lambda x: x.split(',',1)[0])
     airfare = airfare.groupby("recipient_name")["disbursement_amount"].agg(['count', 'sum'])
@@ -79,7 +79,7 @@ def plot_airlines():
     py.iplot(fig, filename='airfare')
     
 def plot_rideshare():
-    all_filings = pd.read_csv("all_filings.csv")
+    all_filings = pd.read_csv("actual_filings.csv")
     rideshare = all_filings[all_filings["recipient_name"].str.contains('^uber|^lyft', flags = re.IGNORECASE)]
     rideshare["candidate_name"] = rideshare["committee_id"].apply(lambda x: cmt_to_name[x])
     rideshare.loc[:, "recipient_name"] = rideshare["recipient_name"].apply(lambda x: x.replace(',',' ').split(' ',1)[0])
