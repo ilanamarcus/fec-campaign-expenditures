@@ -52,14 +52,16 @@ cmt_to_name = {
 #remove reimbursements that are also itemized
 filings = pd.read_csv("all_filings.csv")
 sub_transactions = filings[~filings["back_reference_transaction_id"].isna()]
-items = sub_transactions[sub_transactions["back_reference_schedule_name"].str.strip() == "SB23"]
+items = sub_transactions[sub_transactions["back_reference_schedule_id"].str.strip() == "SB23"]
 reimb_trans_ids = list(items["back_reference_transaction_id"].unique())
 reimb_trans_str_ids = [str(int(id)) for id in reimb_trans_ids]
 filings = filings[~filings["transaction_id"].isin(reimb_trans_str_ids)]
+filings["disbursement_description"] = filings["disbursement_description"].str.lower()
 filings.to_csv("actual_filings.csv")
 
 cats = pd.read_csv("cats.csv")
 cats.columns = ["disbursement_description", "expense_category"]
+cats["disbursement_description"] = cats["disbursement_description"].str.lower()
 expenses = {
             cmt_to_name[cmt_kamala]:expense_cats(filings, cmt_kamala, cats),
             cmt_to_name[cmt_bernie]:expense_cats(filings, cmt_bernie, cats),
@@ -79,3 +81,7 @@ grouped = filings.groupby("committee_id")[["disbursement_amount"]].agg('sum')
 grouped.reset_index(inplace=True)
 grouped["name"] = grouped["committee_id"].apply(lambda x: cmt_to_name[x])
 
+refunds = filings[filings["line_number"] == "28A"]
+refunds = refunds.groupby("committee_id")[["disbursement_amount"]].agg(['sum', 'count'])
+refunds.reset_index(inplace=True)
+refunds["name"] = refunds["committee_id"].apply(lambda x: cmt_to_name[x])

@@ -10,18 +10,22 @@ class Payload:
         self.api_key=os.getenv("KEY")
         self.page=1
         self.per_page=100
+        self.sort = "-disbursement_date"
+        self.last_indexes = dict()
         self.params = params
         
-    def next_page(self):
-        self.page += 1
+        
+    def next_page(self, last_indexes):
+        self.last_indexes = last_indexes
         
     def get_params(self):
         base_params = {
                     'api_key': self.api_key,
-                    'page': self.page,
+                    'sort': self.sort,
                     'per_page': self.per_page
                 }
         base_params.update(self.params)
+        base_params.update(self.last_indexes)
         return base_params
 
 class Client:
@@ -29,17 +33,23 @@ class Client:
         self.base_url = os.getenv("FEC_URL")
         
     def get_all_results(self, url, params):
+        all_results = []
         payload = Payload(params)
+        print("GET:", url, payload.get_params())
         resp=requests.get(url, params=payload.get_params())
-        resp_json = resp.json()
-        results = resp_json["results"]
-        total_pages = resp_json["pagination"]["pages"]
-        if total_pages > 1:
-            for i in range(total_pages):
-                payload.next_page()
-                json=requests.get(url, params=payload.get_params()).json()
-                results.extend(json["results"])
-        return results
+        json = resp.json()
+        results = json["results"]
+        total_pages = json["pagination"]["pages"]
+        print("Count:", json["pagination"]["count"], "Total pages:", total_pages, "Results length:", len(results))
+        while len(results) > 0:
+            all_results.extend(results)
+            payload.next_page(json["pagination"]["last_indexes"])
+            print("GET:", url, payload.get_params())
+            json=requests.get(url, params=payload.get_params()).json()
+            print("Results length:", len(json["results"]))
+            results = json["results"]
+        print("Retrieved", len(all_results), "records.")
+        return all_results
         
     def disbursements_by_purpose(self, committee_id, params={}):
         url = "{}/committee/{}/schedules/schedule_b/by_purpose".format(
@@ -48,10 +58,11 @@ class Client:
         df = pd.DataFrame(results)
         return df
     
-    def efile(self, committee_id, params={}):
-        url = "{}/schedules/schedule_b/efile".format(
+    def efile(self, committee_id, two_yr_period=2020, params={}):
+        url = "{}/schedules/schedule_b".format(
                 self.base_url)
         params["committee_id"] = [committee_id]
+        params["two_year_transaction_period"] = two_yr_period
         results=self.get_all_results(url, params)
         df = pd.DataFrame(results)
         return df
