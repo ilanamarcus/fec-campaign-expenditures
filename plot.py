@@ -24,8 +24,9 @@ def plot_expense_categories():
         data.append(trace)
         
     layout = go.Layout(
+        legend=dict(orientation="h"),
         title=go.layout.Title(
-            text='Campaign expenditures by candidate and category'
+            text='Campaign expenditures by candidate and category',
         ),
         barmode='group'
     )
@@ -86,8 +87,8 @@ def plot_rideshare():
     rideshare = rideshare.groupby(["candidate_name", "recipient_name"])[["disbursement_amount"]].sum()
     
     for k in cmt_to_name.keys():
-        uber = (cmt_to_name[k], "Uber")
-        lyft = (cmt_to_name[k], "Lyft")
+        uber = (cmt_to_name[k], "UBER")
+        lyft = (cmt_to_name[k], "LYFT")
         
         if not rideshare.index.isin([uber]).any():
             #add row
@@ -100,13 +101,13 @@ def plot_rideshare():
     
     uber_trace = go.Bar(
             x= list(rideshare.index),
-            y= rideshare["Uber"],
+            y= rideshare["UBER"],
             name="Spent on Uber"
     )
     
     lyft_trace = go.Bar(
             x= list(rideshare.index),
-            y= rideshare["Lyft"],
+            y= rideshare["LYFT"],
             name="Spent on Lyft"
     )
     
@@ -120,10 +121,32 @@ def plot_rideshare():
     
     fig = go.Figure(data=data, layout=layout)
     py.iplot(fig, filename='rideshares')
+    
+def plot_refunds():
+    refunds = pd.read_csv("refunds.csv", index_col=0)
+    print(list(refunds.index))
+    trace = go.Bar(
+        x = list(refunds.index),
+        y = refunds["disbursement_amount"],
+        name = "Contributions refunded ($)"
+    )
+    
+    data = [trace]
+    layout = go.Layout(
+        title=go.layout.Title(
+            text="Money refunded by candidate"        
+        ),
+        barmode="group"
+    )
+        
+    fig = go.Figure(data=data, layout=layout)
+    py.iplot(fig, fileshare='refunds')
+    
 
 plot_expense_categories()    
 plot_airlines()
 plot_rideshare()
+plot_refunds()
     
     
     

@@ -15,44 +15,44 @@ Event Facility,Events
 Event Fees,Events
 Event Production,Events
 Event Supplies,Events
-Expense Reimbursement,Reimbursement
+Expense Reimbursement,Other
 Expense Reimbursement (Itemized Below),Reimbursement
 Fundraising Consulting,Consulting
 Information Technology & Internet Services,Technology
 Insurance,Other
 Interpreting Services,Accessibility
-Meals,Food
+Meals,Administrative
 Mobile Messaging Platform,Technology
-Office Supplies,Office Expenses
+Office Supplies,Administrative
 Parking Services,Transportation
 Payroll Processing Fees,Payroll
 Payroll Taxes,Payroll
-Per Diem,Per Diem
-Photography Services,Photo/Video
-Printing,Office Expenses
-Printing & Shipping,Office Expenses
-Refund,Reimbursement
-Reimbursement of Pre-candidacy Expenditures per 110.2(k) - Survey Research,Reimbursement
-Rent,Facilities
+Per Diem,Administrative
+Photography Services,Marketing
+Printing,Administrative
+Printing & Shipping,Administrative
+Refund,Contribution Refund
+Reimbursement of Pre-candidacy Expenditures per 110.2(k) - Survey Research,Marketing
+Rent,Administrative
 Salary,Payroll
-Shipping,Office Expenses
-Storage,Office Expenses
+Shipping,Administrative
+Storage,Administrative
 Strategic Consulting,Consulting
 Text Message Platform,Technology
 Texting Services,Technology
 Translation Services,Accessibility
 Travel,Transportation
-Video Production,Photo/Video
+Video Production,Marketing
 Website Services,Technology
 Buttons/Bumperstickers/Signs/Ts,Marketing
 Catering,Events
 Communications Consulting,Consulting
 Consulting/ PoliticalStrategy,Consulting
 Consulting/Political Strategy,Consulting
-Contribution Refund,Reimbursement
+Contribution Refund,Contribution Refund
 Credit Card-See Details,Fees
-Direct Mail,Office Expenses
-Equipment Rental,Office Expenses
+Direct Mail,Administrative
+Equipment Rental,Administrative
 Event Permit,Events
 Event Planning Fees,Events
 Event Security,Events
@@ -63,43 +63,43 @@ Interpreter Services,Accessibility
 Licensing Fee,Fees
 Lodging,Transportation
 Merchant Fees,Fees
-Office Equipment,Office Expenses
+Office Equipment,Administrative
 Payroll Fees,Payroll
 Payroll Tax Overpayment,Payroll
 Payroll-See Details,Payroll
-Photography,Photo/Video
-Phtograpy Supplies,Photo/Video
-Postage,Office Expenses
-Postage Fee,Office Expenses
-"Postage, Mailing Service",Office Expenses
-Reimbursement - See Details,Reimbursement
-Reimbursement-See Details,Reimbursement
-Reimbursment - See Details,Reimbursement
+Photography,Marketing
+Phtograpy Supplies,Marketing
+Postage,Administrative
+Postage Fee,Administrative
+"Postage, Mailing Service",Administrative
+Reimbursement - See Details,Other
+Reimbursement-See Details,Other
+Reimbursment - See Details,Other
 Software,Technology
-Supplies,Office Expenses
-Telephone/Internet,Office Expenses
+Supplies,Administrative
+Telephone/Internet,Administrative
 Transportation,Transportation
 Travel Reimbursement,Transportation
 Travel Reimbursement-See Details,Transportation
-Utilities,Office Expenses
-Videography,Photo/Video
-Videography Fees,Photo/Video
+Utilities,Administrative
+Videography,Marketing
+Videography Fees,Marketing
 Worker's Compensation,Payroll
-Accounting Services,Office Expenses
+Accounting Services,Administrative
 "Catering, Food & Beverages",Events
 Computer Equipment,Technology
 Credit Card Payment,Other
 Design Services,Marketing
 Design/Marketing,Marketing
 Digital Design & Development,Marketing
-Facilities Rental,Facilities
-Facility Rental,Facilities
-Legal Services,Legal Services
-Media Subscription,Office Expenses
+Facilities Rental,Administrative
+Facility Rental,Administrative
+Legal Services,Administrative
+Media Subscription,Administrative
 Membership Fee,Fees
 Online Advertising,Marketing
 Payroll,Payroll
-Phone Services,Office Expenses
+Phone Services,Administrative
 Registration Fees,Fees
 Security Services,Technology
 Security Systems,Technology
@@ -109,21 +109,21 @@ Technology Services,Technology
 Transportation/Security Services,Transportation
 Travel,Transportation
 Advance Services,Other
-Audio Equipment,Photo/Video
-Audio Visual Services,Photo/Video
+Audio Equipment,Marketing
+Audio Visual Services,Marketing
 Communications Services,Consulting
-Compliance Services,Legal Services
+Compliance Services,Administrative
 Entertainment,Events
 Event Production Services,Events
 Payroll - See Below if Itemized,Payroll
 Permit Fee,Fees
-Photography Services and Travel,Photo/Video
-Rental Fee,Facilities
-Telephone Services,Office Expenses
+Photography Services and Travel,Marketing
+Rental Fee,Administrative
+Telephone Services,Administrative
 Travel Reimbursement - See Below if Itemized,Transportation
-Water,Food
+Water,Administrative
 Auto Insurance,Other
-Books,Office Expenses
+Books,Administrative
 Campaign Consulting,Consulting
 Consultation Services,Consulting
 Contribution,Other
@@ -148,48 +148,48 @@ License Fee,Fees
 License Fees,Fees
 List Acquisition,Marketing
 List Rental,Other
-Mailing Permit,Office Expenses
-Meals Credit,Food
-Meals Reimbursement - See Below if Itemized,Food
+Mailing Permit,Administrative
+Meals Credit,Administrative
+Meals Reimbursement - See Below if Itemized,Administrative
 Media Consulting,Consulting
 Media Monitoring,Marketing
 Media Production,Marketing
 Merchant Service Fee,Fees
-Office Expenses,Office Expenses
-Office Expenses Credit,Office Expenses
-Office Expenses Reimbursement - See Below if Itemized,Office Expenses
-Order Fulfillment Services,Office Expenses
+Office Expenses,Administrative
+Office Expenses Credit,Administrative
+Office Expenses Reimbursement - See Below if Itemized,Administrative
+Order Fulfillment Services,Administrative
 Parade Sponsorship Fee,Fees
 Parking Permit,Transportation
 Payroll Fee,Payroll
 Payroll Services,Payroll
-Postage Reimbursement - See Below if Itemized,Office Expenses
+Postage Reimbursement - See Below if Itemized,Administrative
 Print Advertising,Marketing
 Professional Services - Accounting & Compliance,Consulting
 Radio Advertising,Marketing
 Reception - Catering,Events
-Refund of Contribution,Reimbursement
+Refund of Contribution,Contribution Refund
 Registration Fee,Fees
-Reimbursement - See Below if Itemized,Reimbursement
+Reimbursement - See Below if Itemized,Other
 Research,Other
 Research Consulting,Consulting
 Research Reimbursement - See Below if Itemized,Other
-Researching & Shipping Reimbursement - See Below if Itemized,Office Expenses
+Researching & Shipping Reimbursement - See Below if Itemized,Administrative
 Storage Fee,Fees
-Subscription,Office Expenses
-Telephone,Office Expenses
+Subscription,Administrative
+Telephone,Administrative
 Text Messaging Services,Technology
 Transcription Services,Accessibility
-Travel & Office Supplies Reimbursement - See Below if Itemized,Office Expenses
+Travel & Office Supplies Reimbursement - See Below if Itemized,Administrative
 Travel Credit,Transportation
 Unlimited Transfer to State Party Committee,Other
 Advance on Travel Costs,Transportation
 Catering & Supplies Reimbursement - Below if Itemized,Events
-Compliance Consulting,Legal Services
+Compliance Consulting,Administrative
 Credit Card Payment - Below if Itemized,Other
 Credit Card Processing,Fees
 Design Consulting,Marketing
-Direct Mail Services,Office Expenses
+Direct Mail Services,Administrative
 Event Entertainment,Events
 Event Equipment,Events
 Event Space Rental,Events
@@ -197,23 +197,23 @@ Field Consulting,Consulting
 Media Monitoring Services,Marketing
 Mileage Reimbursement,Transportation
 "Mileage, Catering & Rental Reimbursement - Below if Itemized",Transportation
-Office Supplies Reimbursement - Below if Itemized,Office Expenses
-PO Box Reimbursement - Below if Itemized,Office Expenses
-PO Box Rental,Office Expenses
-Political Consutling,Office Expenses
+Office Supplies Reimbursement - Below if Itemized,Administrative
+PO Box Reimbursement - Below if Itemized,Administrative
+PO Box Rental,Administrative
+Political Consutling,Administrative
 Postage & Mileage Reimbursement - Below if Itemized,Consulting
 Production Services,Marketing
-Security,Office Expenses
+Security,Administrative
 Software Subscription,Technology
-Storage & Moving,Office Expenses
+Storage & Moving,Administrative
 Travel & Equipment Reimbursement - Below if Itemized,Transportation
 Travel & Event Supplies Reimbursement - Below if Itemized,Events
 Travel & Mileage Reimbursement - Below if Itemized,Transportation
-Travel & Office Supplies Reimbursement - Below if Itemized,Office Expenses
-Travel & Supplies Reimbursement - Below if Itemized,Office Expenses
+Travel & Office Supplies Reimbursement - Below if Itemized,Administrative
+Travel & Supplies Reimbursement - Below if Itemized,Administrative
 Travel Reimbursement - Below if Itemized,Transportation
 "Travel, Printing & Equipment Reimbursement - Below if Itemized",Transportation
 "Travel, Supplies, Shipping & Mileage Reimbursement - Below if Itemized",Transportation
 Vehicle Lease,Transportation
-Video Production Services,Photo/Video
+Video Production Services,Marketing
 Web Hosting,Technology

@@ -8,6 +8,7 @@ Created on Tue May 14 22:28:09 2019
 
 from client import Client
 import pandas as pd
+import functools
 
 #committee id's
 cmt_kamala="C00694455"
@@ -16,6 +17,8 @@ cmt_pete="C00697441"
 cmt_beto="C00699090"
 cmt_warren="C00693234"
 cmt_klobuchar="C00696419"
+
+committee_ids = [cmt_kamala, cmt_bernie, cmt_pete, cmt_beto, cmt_warren, cmt_klobuchar]
 
 #get data from API
 c = Client()
@@ -75,13 +78,20 @@ expenses = {
 expense_df = pd.DataFrame.from_dict(expenses, orient="index")
 expense_df.to_csv("candidate_expenses.csv")
 
-
-#sum by candidate
+#sum expenditures by candidate
 grouped = filings.groupby("committee_id")[["disbursement_amount"]].agg('sum')
 grouped.reset_index(inplace=True)
 grouped["name"] = grouped["committee_id"].apply(lambda x: cmt_to_name[x])
 
+#How much did each candiate refund?
 refunds = filings[filings["line_number"] == "28A"]
 refunds = refunds.groupby("committee_id")[["disbursement_amount"]].agg(['sum', 'count'])
 refunds.reset_index(inplace=True)
 refunds["name"] = refunds["committee_id"].apply(lambda x: cmt_to_name[x])
+refunds.columns = ["committee_id", "disbursement_amount", "refund_count", "name"]
+refunds.set_index('name', inplace=True)
+refunds.to_csv("refunds.csv", header=True, index=True)
+
+#Did anyone get refunded by the same candidate? No
+refundees = filings[filings["line_number"] == "28A"]
+refundees = refundees.groupby(["recipient_name", "committee_id"])["disbursement_amount"].agg('count')
