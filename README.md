@@ -4,8 +4,8 @@
 1. Create an anaconda environment using python 3.7
 2. pip install requirements.txt
 3. create a .env file with the following two properties:
-  * KEY=<FEC API developer key>
-  * FEC_URL="https://api.open.fec.gov/v1"
+   * KEY=FEC API developer key
+   * FEC_URL="https://api.open.fec.gov/v1"
 
 ### Run: 
 1. aggregate.py uses client.py to request data for specific candidates to create local csvs
