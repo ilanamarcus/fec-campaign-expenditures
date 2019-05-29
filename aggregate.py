@@ -8,7 +8,14 @@ Created on Tue May 14 22:28:09 2019
 
 from client import Client
 import pandas as pd
-import functools
+
+#merge categories into expenditure dataframe 
+def expense_cats(df, committee_id, cats): 
+    df = df[df["committee_id"] == committee_id]
+    df = df.merge(cats, how='left')
+    print(df.columns)
+    df = df.groupby(["expense_category"])["disbursement_amount"].sum()
+    return df
 
 #committee id's
 cmt_kamala="C00694455"
@@ -17,6 +24,16 @@ cmt_pete="C00697441"
 cmt_beto="C00699090"
 cmt_warren="C00693234"
 cmt_klobuchar="C00696419"
+
+#map committee id's to candidate name
+cmt_to_name = {
+    cmt_kamala: "Kamala",
+    cmt_bernie: "Bernie",
+    cmt_pete: "Pete",
+    cmt_beto: "Beto",
+    cmt_warren: "Warren",
+    cmt_klobuchar: "Klobuchar"
+}
 
 committee_ids = [cmt_kamala, cmt_bernie, cmt_pete, cmt_beto, cmt_warren, cmt_klobuchar]
 
@@ -33,24 +50,6 @@ klobuchar = c.efile(cmt_klobuchar)
 #one dataframe
 all_filings = kamala.append([bernie, pete, beto, warren, klobuchar])
 all_filings.to_csv("all_filings.csv")
-
-def expense_cats(df, committee_id, cats): 
-    df = df[df["committee_id"] == committee_id]
-    df = df.merge(cats, how='left')
-    print(df.columns)
-    df = df.groupby(["expense_category"])["disbursement_amount"].sum()
-    #df.reset_index(inplace=True)
-    return df
-
-#map committee id's to candidate name
-cmt_to_name = {
-    cmt_kamala: "Kamala",
-    cmt_bernie: "Bernie",
-    cmt_pete: "Pete",
-    cmt_beto: "Beto",
-    cmt_warren: "Warren",
-    cmt_klobuchar: "Klobuchar"
-}
 
 #remove reimbursements that are also itemized
 filings = pd.read_csv("all_filings.csv")
