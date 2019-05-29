@@ -1,5 +1,5 @@
 # FEC expenditure analysis 
-## Retrieves visualizes all of the schedule B filings for six different Democratic presidential candidates.
+## Retrieves and visualizes all of the schedule B filings for six different Democratic presidential candidates.
 
 ### Set up:
 1. Create an anaconda environment using python 3.7
