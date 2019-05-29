@@ -27,10 +27,10 @@ cmt_klobuchar="C00696419"
 
 #map committee id's to candidate name
 cmt_to_name = {
-    cmt_kamala: "Kamala",
-    cmt_bernie: "Bernie",
-    cmt_pete: "Pete",
-    cmt_beto: "Beto",
+    cmt_kamala: "Harris",
+    cmt_bernie: "Sanders",
+    cmt_pete: "Buttigieg",
+    cmt_beto: "O'Rourke",
     cmt_warren: "Warren",
     cmt_klobuchar: "Klobuchar"
 }
